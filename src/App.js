@@ -1,16 +1,20 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
 
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { Prueba } from './Prueba';
 
 const App = () => {
 
-    
-    return (
-        <div>
-            <h1>Hola mundo</h1>
-            
-        </div>
-    )
-}
+  
 
-export default App
+
+  return (
+    <Provider store={store}>
+      <Prueba />
+    </Provider>
+  );
+};
+
+export default App;
