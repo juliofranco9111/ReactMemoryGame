@@ -20,7 +20,7 @@ const symbols = [
 let data = [];
 
 symbols.forEach((e, i) => {
-  data.push({ symbol: e, id: i+1, open: true });
+  data.push({ symbol: e, id: i+1, open: false });
 });
 
 export default function getNewData() {

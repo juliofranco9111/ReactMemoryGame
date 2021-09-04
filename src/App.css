@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+#options{
+    height: 10%;
+    border: 3px solid black
+}

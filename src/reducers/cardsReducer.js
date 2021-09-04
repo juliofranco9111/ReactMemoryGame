@@ -1,9 +1,11 @@
 import { cards } from '../types/types';
 
 const initialState = {
-  cards: [],
+  cards: null,
+  cardsOpen: true,
   firstOption: null,
   secondOption: null,
+  comparing: false,
 };
 
 export const cardsReducer = (state = initialState, action) => {
@@ -12,6 +14,24 @@ export const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         cards: action.payload,
+      };
+
+    case cards.toggleCards:
+      return {
+        ...state,
+        cardsOpen: false,
+      };
+
+    case cards.setCloseCard:
+      return {
+        ...state,
+        cards: action.payload,
+      };
+
+    case cards.setComparing:
+      return {
+        ...state,
+        comparing: action.payload,
       };
 
     case cards.setFirstOption:
@@ -36,5 +56,3 @@ export const cardsReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-

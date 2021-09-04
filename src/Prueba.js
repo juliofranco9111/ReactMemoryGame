@@ -1,19 +1,26 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setCards } from './actions/cards'
-import { GridCards } from './components/GridCards'
-import getNewData from './db/db'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setCards, toggleCards } from './actions/cards';
+import { GridCards } from './components/GridCards';
+import getNewData from './db/db';
+import { Layout } from './components/Layout';
 
 export const Prueba = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    dispatch(setCards(getNewData()))
+  dispatch(setCards(getNewData()));
+  setTimeout(() => {
+    dispatch(toggleCards());
+  }, 2500);
 
-    let container = 'grid'
+  let container =
+    'h-screen overflow-hidden flex flex-col justify-center w-100 items-center';
 
-    return (
-        <div className={container}>
-            <GridCards/>
-        </div>
-    )
-}
+  return (
+    <div className={container}>
+      <Layout>
+        <GridCards />
+      </Layout>
+    </div>
+  );
+};

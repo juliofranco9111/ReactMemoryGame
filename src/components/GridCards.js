@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { clearOptions, setCloseCard, setComparing } from '../actions/cards';
+import { Card } from './Card';
 
 export const GridCards = () => {
-  const { cards } = useSelector((state) => state.cards);
-
+  const { cards, firstOption, secondOption } = useSelector(
+    (state) => state.cards
+  );
+  
   const [loading, setLoading] = useState(true);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     if (cards && cards.length > 0) {
       setLoading(false);
@@ -14,30 +20,48 @@ export const GridCards = () => {
     }
   }, [cards]);
 
-  const handleClick = (card) => {
-    console.log(card);
-  }
+  const compare = () => {
+    if (!firstOption || !secondOption) {
+      return;
+    }
 
-  const classContainer =
-    'grid place-content-center content-center w-100 h-screen text-center';
+    if (firstOption.symbol === secondOption.symbol) {
+      dispatch(clearOptions())
+      dispatch(setComparing(false))
+
+    } else {
+      
+      let arr = cards.map((e) => {
+        if(firstOption.id === e.id || secondOption.id === e.id) {
+          e.open = false;
+          return e;
+        }else{
+          return e
+        }
+      })
+      setTimeout(() => {
+        dispatch(setCloseCard(arr))
+        dispatch(clearOptions())
+        dispatch(setComparing(false))
+
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    compare();
+  }, [secondOption]);
+
 
   return (
-    <div className={classContainer}>
+    <>
       {!loading ? (
-        <div className='grid gap-1 grid-cols-4 grid-row-4 p-2'>
-          {cards.map((e) => {
-            return (
-              <button onClick={()=>{handleClick(e)}}
-                key={e.id}
-                className='border-2 w1/4 p-4 grid content-center border-black'>
-                <h1 className='text-2xl'>{e.symbol}</h1>
-              </button>
-            );
-          })}
-        </div>
+        cards.map((e, idx) => {
+          return <Card key={e.id} item={e} idx={idx} />;
+        })
       ) : (
         <h1 className='text-4xl animate-pulse'>Loading</h1>
       )}
-    </div>
+    </>
   );
 };
