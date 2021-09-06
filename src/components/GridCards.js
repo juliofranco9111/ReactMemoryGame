@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { clearOptions, setCloseCard, setComparing } from '../actions/cards';
+import {
+  addCardsPaired,
+  clearOptions,
+  setCloseCard,
+  setComparing,
+} from '../actions/cards';
+import { addAttempt, addPoints } from '../actions/points';
 import { Card } from './Card';
 
 export const GridCards = () => {
-  const { cards, firstOption, secondOption } = useSelector(
+  const { cardsA, firstOption, secondOption } = useSelector(
     (state) => state.cards
   );
-  
+
+  const { attempts, currentPoints } = useSelector((state) => state.points);
+
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (cards && cards.length > 0) {
+    if (cardsA && cardsA.length > 0) {
       setLoading(false);
     } else {
       return;
     }
-  }, [cards]);
+  }, [cardsA]);
 
   const compare = () => {
     if (!firstOption || !secondOption) {
@@ -26,25 +34,19 @@ export const GridCards = () => {
     }
 
     if (firstOption.symbol === secondOption.symbol) {
-      dispatch(clearOptions())
-      dispatch(setComparing(false))
-
-    } else {
-      
-      let arr = cards.map((e) => {
-        if(firstOption.id === e.id || secondOption.id === e.id) {
-          e.open = false;
-          return e;
-        }else{
-          return e
-        }
-      })
-      setTimeout(() => {
-        dispatch(setCloseCard(arr))
-        dispatch(clearOptions())
+      dispatch( clearOptions())
         dispatch(setComparing(false))
-
-      }, 1000);
+        dispatch(addAttempt(attempts))
+        dispatch(addPoints(currentPoints))
+        dispatch(addCardsPaired())
+    } else {
+      setTimeout(() => {
+        dispatch(setCloseCard(firstOption.id));
+        dispatch(setCloseCard(secondOption.id));
+        dispatch(setComparing(false));
+        dispatch(addAttempt(attempts));
+        dispatch(clearOptions());
+      }, 700);
     }
   };
 
@@ -52,16 +54,15 @@ export const GridCards = () => {
     compare();
   }, [secondOption]);
 
-
   return (
-    <>
+    <div className='grid grid-cols-4 gap-2 sm:gap-5 w-full'>
       {!loading ? (
-        cards.map((e, idx) => {
+        cardsA.map((e, idx) => {
           return <Card key={e.id} item={e} idx={idx} />;
         })
       ) : (
         <h1 className='text-4xl animate-pulse'>Loading</h1>
       )}
-    </>
+    </div>
   );
 };

@@ -4,6 +4,7 @@ import { setCards, toggleCards } from './actions/cards';
 import { GridCards } from './components/GridCards';
 import getNewData from './db/db';
 import { Layout } from './components/Layout';
+import { Points } from './components/Points';
 
 export const Prueba = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const Prueba = () => {
   return (
     <div className={container}>
       <Layout>
+        <Points/>
         <GridCards />
       </Layout>
     </div>

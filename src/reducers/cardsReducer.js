@@ -1,11 +1,12 @@
 import { cards } from '../types/types';
 
 const initialState = {
-  cards: null,
-  cardsOpen: true,
+  cardsA: null,
+  cardsPaired: 0,
   firstOption: null,
   secondOption: null,
   comparing: false,
+  cardsOpen: true
 };
 
 export const cardsReducer = (state = initialState, action) => {
@@ -13,19 +14,37 @@ export const cardsReducer = (state = initialState, action) => {
     case cards.setAllCards:
       return {
         ...state,
-        cards: action.payload,
+        cardsA: action.payload,
       };
 
     case cards.toggleCards:
       return {
         ...state,
-        cardsOpen: false,
+        cardsOpen: !state.cardsOpen,
       };
 
     case cards.setCloseCard:
       return {
         ...state,
-        cards: action.payload,
+        cardsA: state.cardsA.map(e => {
+          if(e.id === action.payload){
+            e.open = false;
+            return e
+          }
+          return e
+        })
+      };
+    case cards.setOpenCard:
+      
+      return {
+        ...state,
+        cardsA: state.cardsA.map(e => {
+          if(e.id === action.payload){
+            e.open = true;
+            return e
+          }
+          return e
+        })
       };
 
     case cards.setComparing:
@@ -51,6 +70,12 @@ export const cardsReducer = (state = initialState, action) => {
         firstOption: null,
         secondOption: null,
       };
+
+      case cards.addCardsPaired:
+        return{
+          ...state,
+          cardsPaired: state.cardsPaired + 1
+        }
 
     default:
       return state;

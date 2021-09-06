@@ -9,8 +9,8 @@ export const toggleCards = () => ({ type: cards.toggleCards });
 
 export const setComparing = (bool) => ({
   type: cards.setComparing,
-  payload: bool
-})
+  payload: bool,
+});
 
 export const setOption = (option, int) => {
   if (int === 1) {
@@ -30,14 +30,16 @@ const setSecondOption = (card) => ({
   payload: card,
 });
 
-export const setOpenCard = (card) => ({
+export const setOpenCard = (id) => ({
   type: cards.setOpenCard,
-  payload: card,
+  payload: id,
 });
 
-export const setCloseCard = (card) => ({
+export const setCloseCard = (id) => ({
   type: cards.setCloseCard,
-  payload: card,
+  payload: id,
 });
 
 export const clearOptions = () => ({ type: cards.clearOptions });
+
+export const addCardsPaired = () => ({ type: cards.addCardsPaired });

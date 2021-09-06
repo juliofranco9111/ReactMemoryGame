@@ -7,11 +7,12 @@ export const cards = {
   clearOptions: 'clear_options',
   setOpenCard: 'set_open_card',
   setCloseCard: 'set_close_card',
-  setComparing: 'set_comparing'
+  setComparing: 'set_comparing',
+  addCardsPaired: 'add_cards_paired',
 };
 
 export const points = {
   updateBestPuntuation: 'update_best_point',
   addPoints: 'add_points',
-  attempts: 'attempts',
+  addAttempt: 'attempts',
 };

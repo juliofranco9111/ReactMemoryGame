@@ -3,7 +3,182 @@
 @tailwind utilities;
 
 
-#options{
-    height: 10%;
-    border: 3px solid black
+.options {
+    align-items: center;
+    border: 2px solid rgb(139, 136, 136);
+    color: rgb(59, 53, 53);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 70px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.options svg {
+    margin: 0px auto;
+    width: 50%;
+}
+
+
+@media (min-width: 768px) {
+
+    .options {
+        min-height: 150px;
+    }
+
+}
+
+#puzzle {
+    position: relative;
+}
+
+#puzzle::after {
+    background-color: #ffb374;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#speaker {
+    position: relative;
+}
+
+#speaker::before {
+    background-color: #ca98f3;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#lab {
+    position: relative;
+}
+
+#lab::before {
+    background-color: #98f39d;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#pie {
+    position: relative;
+}
+
+#pie::before {
+    background-color: #f398f3;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#earth {
+    position: relative;
+}
+
+#earth::before {
+    background-color: #98a1f3;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#star {
+    position: relative;
+}
+
+#star::before {
+    background-color: #f3e298;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#heart {
+    position: relative;
+}
+
+#heart::before {
+    background-color: #f39898;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3%;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+}
+
+#music {
+    position: relative;
+}
+
+#music::before {
+    background-color: #98cff3;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.5);
+    content: "";
+    height: 104%;
+    left: 3px;
+    position: absolute;
+    top: 3%;
+    width: 104%;
+    z-index: -1;
+
+}
+
+
+#start-points {
+    position: relative;
+    display: flex;
+}
+
+#start-points svg {
+    width: 40px;
+}
+
+#start-points::after {
+
+    background-color: #f8d742;
+    border-radius: 99%;
+    box-shadow: 1px 2px 3px rgba(136, 136, 136, 0.2);
+    content: "";
+    content: "";
+    height: 15px;
+    left: 8px;
+    position: absolute;
+    top: 8px;
+    width: 15px;
+    z-index: -2;
 }
