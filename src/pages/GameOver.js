@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { clearCardsData } from '../actions/cards';
 import { clearPointsData } from '../actions/points';
 import { Button } from '../components/Button';
+import { getPercents, getTotal } from '../helpers/game-over';
 
 export const GameOver = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,12 @@ export const GameOver = () => {
   const { currentPoints, bestPuntuation, userName, attempts } = useSelector(
     (state) => state.points
   );
+
+  const percent = getPercents(attempts);
+  const total = getTotal(currentPoints, percent);
+
+  console.log(attempts);
+  console.log(getPercents(attempts));
 
   const handleStartAgain = () => {
     dispatch(clearCardsData());
@@ -29,10 +36,10 @@ export const GameOver = () => {
         points: <strong>{currentPoints}</strong>
       </h4>
       <h4>
-        bonus: <strong>+20%</strong>(Attempts: <strong>{attempts}</strong>)
+        bonus: <strong>+{ getPercents(attempts) }%</strong>(Attempts: <strong>{attempts}</strong>)
       </h4>
       <h2>
-        total: <strong>85000</strong>
+        total: <strong>{total}</strong>
       </h2>
       <h4>
         best:<strong> {bestPuntuation}</strong>
