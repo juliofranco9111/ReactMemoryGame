@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { clearCardsData } from '../actions/cards';
 import { clearPointsData } from '../actions/points';
+import { Button } from '../components/Button';
 
 export const GameOver = () => {
   const dispatch = useDispatch();
@@ -13,32 +14,37 @@ export const GameOver = () => {
   );
 
   const handleStartAgain = () => {
-     dispatch(clearCardsData());
-     dispatch(clearPointsData());
+    dispatch(clearCardsData());
+    dispatch(clearPointsData());
     setTimeout(() => {
-
-        history.push('/game')
-    }, 500) 
-    
+      history.push('/game');
+    }, 500);
   };
 
   return (
-    <>
-      <h1 className='text-2xl'>Juego terminado</h1>
-      <div className='flex justify-center'>
-        <i className='nes-icon trophy is-large text-center block'></i>
+    <section className='layout__page gameover__page'>
+      <h1 className='title'>Felicidades</h1>
+      <h2 className='username'>{userName}</h2>
+      <h4>points: <strong>{currentPoints}</strong></h4>
+      <h4>
+        bonus: <strong>+20%</strong>(Attempts: <strong>15</strong>)
+      </h4>
+      <h2>
+        total: <strong>85000</strong>
+      </h2>
+      <h4>
+        best:<strong> {bestPuntuation}</strong>
+      </h4>
+      <div className='gameover__buttons'>
+        <Link to='/'>
+          <Button msg='Si, salir' color='white' />
+        </Link>
+        <Button
+          msg='No, seguir jugando'
+          color='black'
+          click={handleStartAgain}
+        />
       </div>
-      <h2 className='e'>Felicidades {userName}</h2>
-      <div>
-        <h2 className='text-3xl'>{currentPoints}</h2>
-        <h2 className=''>Mejor puntuación: 1850</h2>
-      </div>
-      <button onClick={handleStartAgain} className='nes-btn w-full mt-4'>
-        Otra vez
-      </button>
-      <Link to={'/'}>
-        <button className='nes-btn w-full mt-4'>Salir</button>
-      </Link>
-    </>
+    </section>
   );
 };
