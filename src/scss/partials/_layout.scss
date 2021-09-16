@@ -1,0 +1,17 @@
+@import './variables';
+
+#layout__container {
+  margin: 0px auto;
+  background-color: $white;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout__page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -6,7 +6,7 @@ const initialState = {
   firstOption: null,
   secondOption: null,
   comparing: false,
-  cardsOpen: true
+  cardsOpen: true,
 };
 
 export const cardsReducer = (state = initialState, action) => {
@@ -17,34 +17,42 @@ export const cardsReducer = (state = initialState, action) => {
         cardsA: action.payload,
       };
 
-    case cards.toggleCards:
+    case cards.openAllCards:
       return {
         ...state,
-        cardsOpen: !state.cardsOpen,
+        cardsOpen: true,
+      };
+    case cards.closeAllCards:
+      return {
+        ...state,
+        cardsOpen: false,
+        CardsA: state.cardsA.map((e) => {
+          e.open = false;
+          return e;
+        }),
       };
 
     case cards.setCloseCard:
       return {
         ...state,
-        cardsA: state.cardsA.map(e => {
-          if(e.id === action.payload){
+        cardsA: state.cardsA.map((e) => {
+          if (e.id === action.payload) {
             e.open = false;
-            return e
+            return e;
           }
-          return e
-        })
+          return e;
+        }),
       };
     case cards.setOpenCard:
-      
       return {
         ...state,
-        cardsA: state.cardsA.map(e => {
-          if(e.id === action.payload){
+        cardsA: state.cardsA.map((e) => {
+          if (e.id === action.payload) {
             e.open = true;
-            return e
+            return e;
           }
-          return e
-        })
+          return e;
+        }),
       };
 
     case cards.setComparing:
@@ -71,11 +79,17 @@ export const cardsReducer = (state = initialState, action) => {
         secondOption: null,
       };
 
-      case cards.addCardsPaired:
-        return{
-          ...state,
-          cardsPaired: state.cardsPaired + 1
-        }
+    case cards.addCardsPaired:
+      return {
+        ...state,
+        cardsPaired: state.cardsPaired + 1,
+      };
+
+    case cards.clearCardsData:
+      return {
+        ...state,
+        cardsA: null,
+      };
 
     default:
       return state;

@@ -1,16 +1,23 @@
-import { points } from "../types/types"
+import { points, user } from '../types/types';
 
 export const addAttempt = (attempts) => {
-    let result = attempts + 1;
-    return ({
-        type: points.addAttempt,
-        payload: result
-    })
-}
+  let result = attempts + 1;
+  return {
+    type: points.addAttempt,
+    payload: result,
+  };
+};
 export const addPoints = (point) => {
-    let result = point + 1000;
-    return ({
-        type: points.addPoints,
-        payload: result
-    })
-}
+  let result = point + 1000;
+  return {
+    type: points.addPoints,
+    payload: result,
+  };
+};
+
+export const addUserName = (userName) => ({
+  type: user.addUserName,
+  payload: userName,
+});
+
+export const clearPointsData = () => ({ type: points.clearPointsData });

@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url(https://fonts.googleapis.com/css2?family=DM+Mono:wght@100;200;300;400;500&display=swap);
+
+body {
+  font-family: 'DM Mono', monospace;
+}
+
+
 
 
 .options {
@@ -168,6 +172,10 @@
     width: 40px;
 }
 
+#start-points p{
+    margin: auto 0px;
+}
+
 #start-points::after {
 
     background-color: #f8d742;
@@ -181,4 +189,30 @@
     top: 8px;
     width: 15px;
     z-index: -2;
+}
+
+
+#ness-progress-bar{
+    height: 3vh;
+    transition: all 2500ms
+}
+
+
+#btn-home {
+    position: relative;
+    display: flex;
+    color: rgb(44, 44, 44);
+}
+
+#btn-home::before{
+    background-color: #98cff3;
+    box-shadow: 1px 2px 5px rgba(136, 136, 136, 0.3);
+    content: "";
+    height: 102%;
+    left: 2%;
+    position: absolute;
+    top: 3%;
+    width: 102%;
+    z-index: -1;
+
 }

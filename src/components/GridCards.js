@@ -9,17 +9,18 @@ import {
 } from '../actions/cards';
 import { addAttempt, addPoints } from '../actions/points';
 import { Card } from './Card';
+import { Loading } from './Loading';
 
 export const GridCards = () => {
   const { cardsA, firstOption, secondOption } = useSelector(
     (state) => state.cards
   );
 
+  const dispatch = useDispatch();
   const { attempts, currentPoints } = useSelector((state) => state.points);
 
   const [loading, setLoading] = useState(true);
 
-  const dispatch = useDispatch();
   useEffect(() => {
     if (cardsA && cardsA.length > 0) {
       setLoading(false);
@@ -28,40 +29,38 @@ export const GridCards = () => {
     }
   }, [cardsA]);
 
-  const compare = () => {
-    if (!firstOption || !secondOption) {
-      return;
-    }
 
-    if (firstOption.symbol === secondOption.symbol) {
-      dispatch( clearOptions())
-        dispatch(setComparing(false))
-        dispatch(addAttempt(attempts))
-        dispatch(addPoints(currentPoints))
-        dispatch(addCardsPaired())
-    } else {
-      setTimeout(() => {
-        dispatch(setCloseCard(firstOption.id));
-        dispatch(setCloseCard(secondOption.id));
-        dispatch(setComparing(false));
-        dispatch(addAttempt(attempts));
-        dispatch(clearOptions());
-      }, 700);
-    }
-  };
 
   useEffect(() => {
-    compare();
+      if (!firstOption || !secondOption) {
+        return;
+      }
+  
+      if (firstOption.symbol === secondOption.symbol) {
+        dispatch(clearOptions());
+        dispatch(setComparing(false));
+        dispatch(addAttempt(attempts));
+        dispatch(addPoints(currentPoints));
+        dispatch(addCardsPaired());
+      } else {
+        setTimeout(() => {
+          dispatch(setCloseCard(firstOption.id));
+          dispatch(setCloseCard(secondOption.id));
+          dispatch(setComparing(false));
+          dispatch(addAttempt(attempts));
+          dispatch(clearOptions());
+        }, 700);
+      }
   }, [secondOption]);
 
   return (
-    <div className='grid grid-cols-4 gap-2 sm:gap-5 w-full'>
+    <div className="puzzle__grid">
       {!loading ? (
         cardsA.map((e, idx) => {
           return <Card key={e.id} item={e} idx={idx} />;
         })
       ) : (
-        <h1 className='text-4xl animate-pulse'>Loading</h1>
+        <Loading />
       )}
     </div>
   );

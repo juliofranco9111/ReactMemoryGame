@@ -5,7 +5,8 @@ export const setCards = (cardsArray) => ({
   payload: cardsArray,
 });
 
-export const toggleCards = () => ({ type: cards.toggleCards });
+export const openCards = () => ({ type: cards.openAllCards });
+export const closeCards = () => ({ type: cards.closeAllCards });
 
 export const setComparing = (bool) => ({
   type: cards.setComparing,
@@ -43,3 +44,4 @@ export const setCloseCard = (id) => ({
 export const clearOptions = () => ({ type: cards.clearOptions });
 
 export const addCardsPaired = () => ({ type: cards.addCardsPaired });
+export const clearCardsData = () => ({ type: cards.clearCardsData });

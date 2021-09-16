@@ -1,18 +1,12 @@
-import React from 'react';
-import './App.css';
-
 import { Provider } from 'react-redux';
 import { store } from './store/store';
-import { Prueba } from './Prueba';
+import RouterComponent from './router/Router';
+import './scss/styles.scss'
 
 const App = () => {
-
-  
-
-
   return (
     <Provider store={store}>
-      <Prueba />
+      <RouterComponent />
     </Provider>
   );
 };
