@@ -9,18 +9,20 @@ import { Exit } from '../components/Exit';
 import { ProgressBar } from '../components/ProgressBar';
 import getNewData from '../db/db';
 import { openModal } from '../actions/ui';
+import { useCards } from '../hooks/useCards';
 
 export const Puzzle = () => {
   const dispatch = useDispatch();
 
+  const [cards,handleNewCards] = useCards();
+
+  //console.log(cards);
+
   const { modal } = useSelector((state) => state.ui);
 
-  const getCards = () => {
-    let newData = getNewData();
-    return newData;
-  };
+  
 
-  dispatch(setCards(getCards()));
+  dispatch(setCards(cards));
   dispatch(openCards());
   dispatch(clearPointsData());
   setTimeout(() => {
@@ -39,7 +41,7 @@ export const Puzzle = () => {
       <div className='puzzle__button'>
         <Button color='white' msg='Salir' click={handleOpenModal} />
       </div>
-      {modal && <Exit />}
+      <Exit open={modal} />
     </section>
   );
 };
