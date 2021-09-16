@@ -15,20 +15,22 @@ export const Exit = ({ open = false }) => {
   };
   return (
     open && (
-      <section className='exit__page'>
-        <h1 className='title'>¿Quieres salir?</h1>
+      <div className='exit__container'>
+        <div className='exit__page animated fadeIn faster'>
+          <h1 className='title'>¿Quieres salir?</h1>
 
-        <div className='exit__buttons'>
-          <Link to='/'>
-            <Button msg='Si, salir' color='white' click={handleExit} />
-          </Link>
-          <Button
-            msg='No, seguir jugando'
-            color='black'
-            click={handleContinue}
-          />
+          <div className='exit__buttons'>
+            <Link to='/'>
+              <Button msg='Si, salir' color='white' click={handleExit} />
+            </Link>
+            <Button
+              msg='No, seguir jugando'
+              color='black'
+              click={handleContinue}
+            />
+          </div>
         </div>
-      </section>
+      </div>
     )
   );
 };

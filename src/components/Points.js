@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { clearCardsData, setCards } from '../actions/cards';
-import { clearPointsData } from '../actions/points';
-import getNewData from '../db/db';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 export const Points = () => {
-  const { attempts, currentPoints, bestPuntuation } = useSelector((state) => state.points);
+  const { currentPoints, bestPuntuation } = useSelector(
+    (state) => state.points
+  );
   const { cardsA, cardsPaired } = useSelector((state) => state.cards);
   const history = useHistory();
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   useEffect(() => {
     if (cardsA && cardsA.length > 0) {
@@ -24,20 +23,20 @@ export const Points = () => {
     if (cardsPaired === 8) {
       history.push('/game-over');
     }
-  }, [cardsPaired]);
+  }, [cardsPaired, history]);
 
-  const handleDispatch = () => {
+  /*   const handleDispatch = () => {
     dispatch(clearPointsData());
     dispatch(clearCardsData());
     dispatch(setCards(getNewData()));
-  };
+  }; */
 
   return (
     <>
       {show && (
         <>
-          <h3 className="puzzle__best">Best: {bestPuntuation}</h3>
-          <h2 className="puzzle__points">Points:{currentPoints}</h2>
+          <h3 className='puzzle__best'>Best: {bestPuntuation}</h3>
+          <h2 className='puzzle__points'>Points:{currentPoints}</h2>
         </>
       )}
       {/*   <div>

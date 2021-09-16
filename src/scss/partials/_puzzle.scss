@@ -2,6 +2,7 @@
 
 .puzzle__grid {
   display: grid;
+  margin-top: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 10px;
 }
@@ -28,8 +29,7 @@
 
  
 .puzzle__attempts {
-  margin-top: 25px;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 
@@ -37,6 +37,7 @@
 progress[value] {
   width: 100%;
   height: 16px;
+  margin-top: 30px;
   box-shadow: $shadow;
   appearance: none;
   -webkit-appearance: none;

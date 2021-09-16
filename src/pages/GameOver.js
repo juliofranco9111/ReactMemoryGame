@@ -29,8 +29,8 @@ export const GameOver = () => {
   };
 
   return (
-    <section className='layout__page gameover__page'>
-      <h1 className='title'>Felicidades</h1>
+    <section className='layout__page gameover__page animated fadeIn faster'>
+      <h1 className='title'>¡Muy bien!</h1>
       <h2 className='username'>{userName}</h2>
       <h4>
         points: <strong>{currentPoints}</strong>

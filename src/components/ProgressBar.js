@@ -20,13 +20,13 @@ export const ProgressBar = () => {
   };
 
   return (
-    <div className="puzzle__progress">
-    <h3 className="puzzle__attempts">Attempts: {attempts}</h3>
+    <div className='puzzle__progress'>
       {show && (
         <progress
           value={cardsPaired && returnPercent(cardsPaired)}
           max='100'></progress>
       )}
+      <h3 className='puzzle__attempts'>Attempts: {attempts}</h3>
     </div>
   );
 };

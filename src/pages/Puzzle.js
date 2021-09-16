@@ -1,24 +1,21 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { closeCards, openCards, setCards } from '../actions/cards';
 import { clearPointsData } from '../actions/points';
 import { Button } from '../components/Button';
 import { GridCards } from '../components/GridCards';
 import { Points } from '../components/Points';
-import { Exit } from '../components/Exit';
 import { ProgressBar } from '../components/ProgressBar';
-import getNewData from '../db/db';
 import { openModal } from '../actions/ui';
 import { useCards } from '../hooks/useCards';
 
 export const Puzzle = () => {
   const dispatch = useDispatch();
 
-  const [cards,handleNewCards] = useCards();
+  const [cards] = useCards();
 
   //console.log(cards);
 
-  const { modal } = useSelector((state) => state.ui);
 
   
 
@@ -34,14 +31,13 @@ export const Puzzle = () => {
   };
 
   return (
-    <section className='layout__page'>
+    <section className='layout__page animated fadeIn faster'>
       <Points />
       <GridCards />
       <ProgressBar />
       <div className='puzzle__button'>
         <Button color='white' msg='Salir' click={handleOpenModal} />
       </div>
-      <Exit open={modal} />
     </section>
   );
 };

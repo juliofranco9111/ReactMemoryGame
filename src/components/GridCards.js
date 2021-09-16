@@ -29,35 +29,33 @@ export const GridCards = () => {
     }
   }, [cardsA]);
 
-
-
   useEffect(() => {
-      if (!firstOption || !secondOption) {
-        return;
-      }
-  
-      if (firstOption.symbol === secondOption.symbol) {
-        dispatch(clearOptions());
+    if (!firstOption || !secondOption) {
+      return;
+    }
+
+    if (firstOption.symbol === secondOption.symbol) {
+      dispatch(clearOptions());
+      dispatch(setComparing(false));
+      dispatch(addAttempt(attempts));
+      dispatch(addPoints(currentPoints));
+      dispatch(addCardsPaired());
+    } else {
+      setTimeout(() => {
+        dispatch(setCloseCard(firstOption.id));
+        dispatch(setCloseCard(secondOption.id));
         dispatch(setComparing(false));
         dispatch(addAttempt(attempts));
-        dispatch(addPoints(currentPoints));
-        dispatch(addCardsPaired());
-      } else {
-        setTimeout(() => {
-          dispatch(setCloseCard(firstOption.id));
-          dispatch(setCloseCard(secondOption.id));
-          dispatch(setComparing(false));
-          dispatch(addAttempt(attempts));
-          dispatch(clearOptions());
-        }, 700);
-      }
+        dispatch(clearOptions());
+      }, 700);
+    }
   }, [secondOption]);
 
   return (
-    <div className="puzzle__grid">
+    <div className='puzzle__grid'>
       {!loading ? (
-        cardsA.map((e, idx) => {
-          return <Card key={e.id} item={e} idx={idx} />;
+        cardsA.map((e) => {
+          return <Card key={e.id} item={e} />;
         })
       ) : (
         <Loading />
