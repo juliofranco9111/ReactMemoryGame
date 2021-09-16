@@ -23,3 +23,7 @@ export const points = {
 export const user = {
   addUserName: 'add_username'
 }
+export const ui = {
+  openModal: 'open_modal',
+  closeModal: 'close_modal'
+}
