@@ -9,7 +9,7 @@ import { Button } from '../components/Button';
 export const GameOver = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { currentPoints, bestPuntuation, userName } = useSelector(
+  const { currentPoints, bestPuntuation, userName, attempts } = useSelector(
     (state) => state.points
   );
 
@@ -25,9 +25,11 @@ export const GameOver = () => {
     <section className='layout__page gameover__page'>
       <h1 className='title'>Felicidades</h1>
       <h2 className='username'>{userName}</h2>
-      <h4>points: <strong>{currentPoints}</strong></h4>
       <h4>
-        bonus: <strong>+20%</strong>(Attempts: <strong>15</strong>)
+        points: <strong>{currentPoints}</strong>
+      </h4>
+      <h4>
+        bonus: <strong>+20%</strong>(Attempts: <strong>{attempts}</strong>)
       </h4>
       <h2>
         total: <strong>85000</strong>
@@ -37,13 +39,9 @@ export const GameOver = () => {
       </h4>
       <div className='gameover__buttons'>
         <Link to='/'>
-          <Button msg='Si, salir' color='white' />
+          <Button msg='Salir' color='white' />
         </Link>
-        <Button
-          msg='No, seguir jugando'
-          color='black'
-          click={handleStartAgain}
-        />
+        <Button msg='Jugar de nuevo' color='black' click={handleStartAgain} />
       </div>
     </section>
   );

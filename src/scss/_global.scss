@@ -25,12 +25,17 @@ body {
   height: 100vh;
 }
 
+h1,h2,h3{
+  font-weight: 400;
+}
+
 section {
   width: 90%;
   max-width: 500px;
   display: flex;
   flex-direction: column;
-  height: 100vh;  
+  height: 100vh; 
+  padding-bottom: 30px; 
 }
 
 .btn {
@@ -39,8 +44,8 @@ section {
   box-sizing: border-box;
   display: block;
   font-family: 'DM Mono', monospace;
-  font-size: 1.5em;
-  height: 50px;
+  font-size: 1.3em;
+  height: 40px;
   margin: 0px auto;
   overflow: visible;
   width: 100%;
@@ -60,7 +65,7 @@ section {
   font-family: 'DM Serif Display';
   font-weight: 400;
   max-width: 400px;
-  font-size: 4.4em;
+  font-size: 3em;
   line-height: 1;
   margin: 0px auto;
   text-align: center;

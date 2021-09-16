@@ -6,7 +6,7 @@ import { clearPointsData } from '../actions/points';
 import getNewData from '../db/db';
 
 export const Points = () => {
-  const { attempts, currentPoints } = useSelector((state) => state.points);
+  const { attempts, currentPoints, bestPuntuation } = useSelector((state) => state.points);
   const { cardsA, cardsPaired } = useSelector((state) => state.cards);
   const history = useHistory();
   const [show, setShow] = useState(false);
@@ -36,8 +36,8 @@ export const Points = () => {
     <>
       {show && (
         <>
-          <h3 className="puzzle__best">Best: {currentPoints}</h3>
-          <h2 className="puzzle__points">Points:{attempts}</h2>
+          <h3 className="puzzle__best">Best: {bestPuntuation}</h3>
+          <h2 className="puzzle__points">Points:{currentPoints}</h2>
         </>
       )}
       {/*   <div>

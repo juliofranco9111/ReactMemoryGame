@@ -19,7 +19,6 @@ export const Exit = ({ open = false }) => {
         <h1 className='title'>¿Quieres salir?</h1>
 
         <div className='exit__buttons'>
-          <p>Al salir perderás todo tu progreso</p>
           <Link to='/'>
             <Button msg='Si, salir' color='white' click={handleExit} />
           </Link>

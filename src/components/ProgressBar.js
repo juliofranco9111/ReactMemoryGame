@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 export const ProgressBar = () => {
   const { cardsPaired, cardsA } = useSelector((state) => state.cards);
+  const { attempts } = useSelector((state) => state.points);
 
   const [show, setShow] = useState(false);
 
@@ -20,7 +21,7 @@ export const ProgressBar = () => {
 
   return (
     <div className="puzzle__progress">
-    <h3 className="puzzle__attempts">Attempts: 3</h3>
+    <h3 className="puzzle__attempts">Attempts: {attempts}</h3>
       {show && (
         <progress
           value={cardsPaired && returnPercent(cardsPaired)}
