@@ -7,7 +7,7 @@ import { ProgressBar } from '../components/ProgressBar';
 import { openModal } from '../actions/ui';
 import { useHistory } from 'react-router';
 
-export const Puzzle = () => {
+export default function Puzzle() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -31,4 +31,4 @@ export const Puzzle = () => {
       </div>
     </section>
   );
-};
+}

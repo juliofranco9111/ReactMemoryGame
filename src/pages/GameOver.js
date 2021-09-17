@@ -8,7 +8,7 @@ import { Button } from '../components/Button';
 import { getPercents, getTotal } from '../helpers/game-over';
 import { useCards } from '../hooks/useCards';
 
-export const GameOver = () => {
+export default function GameOver(){
   const [cards] = useCards();
   const dispatch = useDispatch();
   const { currentPoints, bestPuntuation, userName, attempts } = useSelector(

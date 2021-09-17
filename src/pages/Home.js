@@ -8,7 +8,7 @@ import { Button } from '../components/Button';
 import { useCards } from '../hooks/useCards';
 import { useForm } from '../hooks/useForm';
 
-export const Home = () => {
+export default function Home() {
   const { userName } = useSelector((state) => state.points);
   const [cards] = useCards();
   const history = useHistory();
@@ -53,4 +53,4 @@ export const Home = () => {
       </div>
     </div>
   );
-};
+}
