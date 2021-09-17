@@ -35,8 +35,8 @@ export const Points = () => {
     <>
       {show && (
         <>
-          <h3 className='puzzle__best'>Best: {bestPuntuation}</h3>
-          <h2 className='puzzle__points'>Points:{currentPoints}</h2>
+          <h3 className='puzzle__best'>Mejor Puntaje: {bestPuntuation}</h3>
+          <h2 className='puzzle__points'>Puntos:{currentPoints}</h2>
         </>
       )}
       {/*   <div>

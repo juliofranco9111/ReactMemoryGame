@@ -48,18 +48,21 @@ export const GameOver = () => {
       <h1 className='title'>¡Muy bien!</h1>
       <h2 className='username'>{userName}</h2>
       <h4>
-        points: <strong>{currentPoints}</strong>
+        mejor:<strong> {bestPuntuation}</strong>
       </h4>
       <h4>
-        bonus: <strong>+{getPercents(attempts)}%</strong>(Attempts:{' '}
-        <strong>{attempts}</strong>)
+        puntos: <strong>{currentPoints}</strong>
+      </h4>
+      <h4>
+        bonus: <strong>+{getPercents(attempts)}%</strong>
+      </h4>
+      <h4>
+        (intentos: <strong>{attempts}</strong>)
       </h4>
       <h2>
         total: <strong>{total}</strong>
       </h2>
-      <h4>
-        best:<strong> {bestPuntuation}</strong>
-      </h4>
+
       <div className='gameover__buttons'>
         <Link to='/'>
           <Button msg='Salir' color='white' click={handleExit} />

@@ -26,7 +26,7 @@ export const ProgressBar = () => {
           value={cardsPaired && returnPercent(cardsPaired)}
           max='100'></progress>
       )}
-      <h3 className='puzzle__attempts'>Attempts: {attempts}</h3>
+      <h3 className='puzzle__attempts'>Intentos: {attempts}</h3>
     </div>
   );
 };
