@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { closeModal } from '../actions/ui';
 import { Button } from './Button';
 
-export const Exit = ({ open = false }) => {
+export default function Exit({ open = false }) {
   const dispatch = useDispatch();
 
   const handleContinue = () => {
@@ -33,4 +33,4 @@ export const Exit = ({ open = false }) => {
       </div>
     )
   );
-};
+}
