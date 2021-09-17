@@ -1,8 +1,8 @@
 export const getPercents = (attempts) => {
   if (attempts > 0 && attempts < 15) {
-    return 20;
+    return 200;
   } else if (attempts > 15 && attempts < 20) {
-    return 15;
+    return 150;
   } else {
     return 0;
   }

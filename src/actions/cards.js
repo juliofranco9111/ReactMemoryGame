@@ -1,9 +1,11 @@
 import { cards } from '../types/types';
 
-export const setCards = (cardsArray) => ({
-  type: cards.setAllCards,
-  payload: cardsArray,
-});
+export const SetCards = (cardsArray) => {
+  return {
+    type: cards.setAllCards,
+    payload: cardsArray,
+  };
+};
 
 export const openCards = () => ({ type: cards.openAllCards });
 export const closeCards = () => ({ type: cards.closeAllCards });

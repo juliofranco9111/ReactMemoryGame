@@ -87,8 +87,7 @@ export const cardsReducer = (state = initialState, action) => {
 
     case cards.clearCardsData:
       return {
-        ...state,
-        cardsA: null,
+        ...initialState
       };
 
     default:

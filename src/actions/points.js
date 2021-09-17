@@ -15,6 +15,11 @@ export const addPoints = (point) => {
   };
 };
 
+export const updateBestPuntuation = (pointsUser) => ({
+  type: points.updateBestPuntuation,
+  payload: pointsUser,
+});
+
 export const addUserName = (userName) => ({
   type: user.addUserName,
   payload: userName,

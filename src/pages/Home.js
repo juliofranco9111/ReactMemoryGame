@@ -1,33 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addUserName } from '../actions/points';
+import { clearCardsData, closeCards, SetCards } from '../actions/cards';
+import { addUserName, clearPointsData } from '../actions/points';
 import { Button } from '../components/Button';
+import { useCards } from '../hooks/useCards';
 import { useForm } from '../hooks/useForm';
 
 export const Home = () => {
-  const dispatch = useDispatch();
-  //let nameUser = localStorage.getItem('name') || '';
-
-  /*  if (nameUser && nameUser.length > 0) {
-    dispatch(addUserName(nameUser))
-  } */
-  const history = useHistory();
-
   const { userName } = useSelector((state) => state.points);
+  const [cards] = useCards();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [values, handleInputChange] = useForm({
+  const [{ name }, handleInputChange] = useForm({
     name: userName,
   });
 
-  const { name } = values;
+  useEffect(() => {
+    dispatch(clearCardsData());
+    dispatch(clearPointsData());
+  }, []);
 
   const handleSubmit = () => {
-    localStorage.setItem('name', name);
     dispatch(addUserName(name));
-    history.push('/game')
-    
+    dispatch(SetCards(cards));
+    history.push('/game');
+    setTimeout(() => {
+      dispatch(closeCards());
+    }, 2500);
   };
 
   return (
@@ -40,12 +42,12 @@ export const Home = () => {
             autoComplete='off'
             type='text'
             name='name'
-            value={values.name}
+            value={name}
             placeholder='Escribe algo...'
             onChange={handleInputChange}
           />
           <div>
-              <Button color='black' click={handleSubmit} msg='Empezar' />
+            <Button color='black' click={handleSubmit} msg='Empezar' />
           </div>
         </form>
       </div>
