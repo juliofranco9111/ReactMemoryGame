@@ -23,7 +23,8 @@ export const Home = () => {
     dispatch(clearPointsData());
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.PreventDefault();
     dispatch(addUserName(name));
     dispatch(SetCards(cards));
     history.push('/game');
