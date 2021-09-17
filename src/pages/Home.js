@@ -23,8 +23,7 @@ export const Home = () => {
     dispatch(clearPointsData());
   }, []);
 
-  const handleSubmit = (e) => {
-    e.PreventDefault();
+  const handleSubmit = () => {
     dispatch(addUserName(name));
     dispatch(SetCards(cards));
     history.push('/game');
@@ -48,7 +47,7 @@ export const Home = () => {
             onChange={handleInputChange}
           />
           <div>
-            <Button color='black' click={handleSubmit} msg='Empezar' />
+            <Button color='black' msg='Empezar' />
           </div>
         </form>
       </div>
