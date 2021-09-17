@@ -47,7 +47,7 @@ export const GridCards = () => {
         dispatch(setComparing(false));
         dispatch(addAttempt(attempts));
         dispatch(clearOptions());
-      }, 700);
+      }, 400);
     }
   }, [secondOption]);
 
