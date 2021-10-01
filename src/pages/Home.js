@@ -29,7 +29,7 @@ export default function Home() {
     history.push('/game');
     setTimeout(() => {
       dispatch(closeCards());
-    }, 2500);
+    }, 3500);
   };
 
   return (
